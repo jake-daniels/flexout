@@ -2,6 +2,21 @@
     "name": "flexout",
     "version": "1.0.1",
     "license": "MIT",
+    "description": "A set of React components for quick flexbox layout prototyping.",
+    "keywords": [
+        "react",
+        "flexbox",
+        "layout"
+    ],
+    "author": {
+        "name": "jake-daniels",
+        "email": "soltes.jakub@gmail.com",
+        "url": "https://github.com/jake-daniels"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jake-daniels/flexout"
+    },
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
