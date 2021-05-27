@@ -1,6 +1,6 @@
 {
     "name": "flexout",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "MIT",
     "description": "A set of React components for quick flexbox layout prototyping.",
     "keywords": [
