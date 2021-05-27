@@ -1,4 +1,4 @@
-import { Props } from './types'
+import { MarginPropDecomposed, PaddingPropDecomposed, Props } from './types'
 
 export function transformPropsToCss(props: Props) {
     return `
@@ -29,19 +29,29 @@ export function transformPropsToCss(props: Props) {
 
 		${defineSpacing(props)}
 
-		${defineProperty('margin-top', props.margin?.top)}
-		${defineProperty('margin-right', props.margin?.right)}
-		${defineProperty('margin-bottom', props.margin?.bottom)}
-		${defineProperty('margin-left', props.margin?.left)}
+		${defineProperty('margin', isString(props.margin) ? props.margin : undefined)}
+		${defineProperty('margin-top', isObject<MarginPropDecomposed>(props.margin) ? props.margin.top : undefined)}
+		${defineProperty('margin-right', isObject<MarginPropDecomposed>(props.margin) ? props.margin.right : undefined)}
+		${defineProperty('margin-bottom', isObject<MarginPropDecomposed>(props.margin) ? props.margin.bottom : undefined)}
+		${defineProperty('margin-left', isObject<MarginPropDecomposed>(props.margin) ? props.margin.left : undefined)}
 
-		${defineProperty('padding-top', props.padding?.top)}
-		${defineProperty('padding-right', props.padding?.right)}
-		${defineProperty('padding-bottom', props.padding?.bottom)}
-		${defineProperty('padding-left', props.padding?.left)}
+		${defineProperty('padding', isString(props.padding) ? props.padding : undefined)}
+		${defineProperty('padding-top', isObject<PaddingPropDecomposed>(props.padding) ? props.padding.top : undefined)}
+		${defineProperty('padding-right', isObject<PaddingPropDecomposed>(props.padding) ? props.padding.right : undefined)}
+		${defineProperty('padding-bottom', isObject<PaddingPropDecomposed>(props.padding) ? props.padding.bottom : undefined)}
+		${defineProperty('padding-left', isObject<PaddingPropDecomposed>(props.padding) ? props.padding.left : undefined)}
 
 		${defineProperty('width', props.width)}
 		${defineProperty('height', props.height)}
 	`
+}
+
+function isString(prop: any): prop is string {
+    return prop !== undefined && typeof prop === 'string'
+}
+
+function isObject<T>(prop: any): prop is T {
+    return prop !== undefined && typeof prop === 'object'
 }
 
 function defineProperty(name: string, value: any) {

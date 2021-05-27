@@ -34,20 +34,31 @@ interface ExtraConvenienceProps {
     align?: CSS.Property.AlignItems
     justify?: CSS.Property.JustifyContent
     spacing?: CSS.Property.Margin
-    margin?: {
-        top?: CSS.Property.Margin
-        right?: CSS.Property.Margin
-        bottom?: CSS.Property.Margin
-        left?: CSS.Property.Margin
-    }
-    padding?: {
-        top?: CSS.Property.Padding
-        right?: CSS.Property.Padding
-        bottom?: CSS.Property.Padding
-        left?: CSS.Property.Padding
-    }
+    margin?: CSS.Property.Margin | MarginPropDecomposed
+    padding?: CSS.Property.Padding | PaddingPropDecomposed
     width?: CSS.Property.Width
     height?: CSS.Property.Height
+}
+
+export interface MarginPropDecomposed {
+    top?: CSS.Property.Margin
+    right?: CSS.Property.Margin
+    bottom?: CSS.Property.Margin
+    left?: CSS.Property.Margin
+}
+
+export interface MarginPropDecomposed {
+    top?: CSS.Property.Margin
+    right?: CSS.Property.Margin
+    bottom?: CSS.Property.Margin
+    left?: CSS.Property.Margin
+}
+
+export interface PaddingPropDecomposed {
+    top?: CSS.Property.Padding
+    right?: CSS.Property.Padding
+    bottom?: CSS.Property.Padding
+    left?: CSS.Property.Padding
 }
 
 export interface FlexboxProps extends FlowProps, FlexibilityProps, AlignmentProps, ExtraConvenienceProps {}
