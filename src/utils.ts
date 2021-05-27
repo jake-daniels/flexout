@@ -18,6 +18,11 @@ export function transformPropsToCss(props: Props) {
 		${defineProperty('justify-content', props.justifyContent)}
 		${defineProperty('justify-items', props.justifyItems)}
 		${defineProperty('justify-self', props.justifySelf)}
+		${defineProperty('place-content', props.placeContent)}
+		${defineProperty('place-items', props.placeItems)}
+		${defineProperty('gap', props.gap)}
+		${defineProperty('row-gap', props.rowGap)}
+		${defineProperty('column-gap', props.columnGap)}
 
 		${defineProperty('flex-flow', props.flow)}
 		${defineProperty('flex-wrap', props.wrap)}
@@ -26,8 +31,6 @@ export function transformPropsToCss(props: Props) {
 		${defineProperty('flex-shrink', props.shrink)}
 		${defineProperty('align-items', props.align)}
 		${defineProperty('justify-content', props.justify)}
-
-		${defineSpacing(props)}
 
 		${defineProperty('margin', isString(props.margin) ? props.margin : undefined)}
 		${defineProperty('margin-top', isObject<MarginPropDecomposed>(props.margin) ? props.margin.top : undefined)}
@@ -56,28 +59,4 @@ function isObject<T>(prop: any): prop is T {
 
 function defineProperty(name: string, value: any) {
     return value !== undefined ? `${name}: ${value};` : ''
-}
-
-function defineSpacing(props: Props) {
-    if (props.spacing !== undefined && props.flexDirection === 'row') {
-        return `
-			& > * {
-				margin-left: calc(${props.spacing} / 2);
-				margin-right: calc(${props.spacing} / 2);
-				&:first-child { margin-left: 0; }
-				&:last-child { margin-right: 0; }
-			}
-		`
-    }
-    if (props.spacing !== undefined && props.flexDirection === 'column') {
-        return `
-			& > * {
-				margin-top: calc(${props.spacing} / 2);
-				margin-bottom: calc(${props.spacing} / 2);
-				&:first-child { margin-top: 0; }
-				&:last-child { margin-bottom: 0; }
-			}
-		`
-    }
-    return ''
 }

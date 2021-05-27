@@ -23,6 +23,14 @@ interface AlignmentProps {
     justifyContent?: CSS.Property.JustifyContent
     justifyItems?: CSS.Property.JustifyItems
     justifySelf?: CSS.Property.JustifySelf
+    placeContent?: CSS.Property.PlaceContent
+    placeItems?: CSS.Property.PlaceItems
+}
+
+interface SpacingProps {
+    gap?: CSS.Property.Gap
+    rowGap?: CSS.Property.RowGap
+    columnGap?: CSS.Property.ColumnGap
 }
 
 interface ExtraConvenienceProps {
@@ -33,7 +41,6 @@ interface ExtraConvenienceProps {
     shrink?: CSS.Property.FlexShrink
     align?: CSS.Property.AlignItems
     justify?: CSS.Property.JustifyContent
-    spacing?: CSS.Property.Margin
     margin?: CSS.Property.Margin | MarginPropDecomposed
     padding?: CSS.Property.Padding | PaddingPropDecomposed
     width?: CSS.Property.Width
@@ -61,6 +68,11 @@ export interface PaddingPropDecomposed {
     left?: CSS.Property.Padding
 }
 
-export interface FlexboxProps extends FlowProps, FlexibilityProps, AlignmentProps, ExtraConvenienceProps {}
+export interface FlexboxProps
+    extends FlowProps,
+        FlexibilityProps,
+        AlignmentProps,
+        SpacingProps,
+        ExtraConvenienceProps {}
 
 export interface Props extends HTMLDivProps, FlexboxProps {}
