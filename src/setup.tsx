@@ -29,6 +29,8 @@ const OmmitedProps: Array<keyof FlexboxProps> = [
     'spacing',
     'width',
     'height',
+    'margin',
+    'padding',
 ]
 
 function forwardProp(prop: string) {
